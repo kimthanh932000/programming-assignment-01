@@ -23,11 +23,11 @@ while True:
     difficulty = input("Invalid choice! Enter E, M or H.\n")
 
 if difficulty == 'E':
-    print("Easy difficulty selected!")
+    print("Easy difficulty selected!\n")
 elif difficulty == 'M':
-    print("Medium difficulty selected!")
+    print("Medium difficulty selected!\n")
 else:
-    print("Hard difficulty selected!")
+    print("Hard difficulty selected!\n")
 
 questions = None
 quantity = None
@@ -55,58 +55,62 @@ else:
 score = 0
 randNumbers = None
 
-for question in range(questions)
+for question in range(questions):
     print("Question", question + 1, "of", questions, ".")
 
     # not up to final question
     if question + 1 < questions:
-        randNums = random_list(quantity, minimum, maximum)
+        randNumbers = random_list(quantity, minimum, maximum)
 
     else:
         print("Challenge questions!")
-        randNums = random_list(quantity, minimum * 2, maximum * 2)
+        randNumbers = random_list(quantity, minimum * 2, maximum * 2)
 
     number = random.randint(1,4)
 
     if number == 1:
-        value = int(prompt("What is the smallest number in this list?", randNumbers))
+        print("What is the smallest number in this list?", randNumbers)
+        value = int(input())
         answer = min(randNumbers)
         
         if value == answer:
-            print("Correct!")
+            print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer)
+            print("Incorrect! Correct answer was", answer, ".\n")
             
     elif number == 2:
-        value = int(prompt("What is the biggest number in this list?", randNumbers))
+        print("What is the biggest number in this list?", randNumbers)
+        value = int(input())
         answer = max(randNumbers)
         
         if value == answer:
-            print("Correct!")
+            print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer)
+            print("Incorrect! Correct answer was", answer, ".\n")
 
     elif number == 3:
-        value = int(prompt("What is the sum of the numbers in this list?", randNumbers))
+        print("What is the sum of the numbers in this list?", randNumbers)
+        value = int(input())
         answer = sum(randNumbers)
         
         if value == answer:
-            print("Correct!")
+            print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer)
+            print("Incorrect! Correct answer was", answer, ".\n")
 
     else:
-        value = int(prompt("What is the average of the numbers in this list?", randNumbers))
+        print("What is the average of the numbers in this list?", randNumbers, "(round UP to nearest integer)")
+        value = int(input())
         answer = math.ceil(sum(randNumbers) / len(randNumbers))
         
         if value == answer:
             print("Correct!")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer)
+            print("Incorrect! Correct answer was", answer, ".\n")
 
 print("Test complete!\n You scored", score, "/", questions, "(", round(score / questions * 100, 1), "%).")
 
