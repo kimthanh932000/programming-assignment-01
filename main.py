@@ -1,3 +1,4 @@
+import math
 import random
 
 def random_list(quantity, minimum, maximum):
@@ -9,18 +10,16 @@ def random_list(quantity, minimum, maximum):
 
     return result
 
-##############################################
-import math
+##################################
 
 print("Welcome to the Number List Test program.")
 
 difficulty = input("Select a difficulty:\n[E]asy\n[M]edium\n[H]ard\n").upper()
-##print("input:", difficulty)
 
 while True:
     if difficulty in ['E', 'M', 'H']:
         break
-    difficulty = input("Invalid choice! Enter E, M or H.\n")
+    difficulty = input("Invalid choice! Enter E, M or H.\n").upper()
 
 if difficulty == 'E':
     print("Easy difficulty selected!\n")
@@ -56,7 +55,7 @@ score = 0
 randNumbers = None
 
 for question in range(questions):
-    print("Question", question + 1, "of", questions, ".")
+    print("Question" + str(question + 1) + " of " + str(questions) + ".")
 
     # not up to final question
     if question + 1 < questions:
@@ -77,7 +76,7 @@ for question in range(questions):
             print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer, ".\n")
+            print("Incorrect! Correct answer was " + str(answer) + ".\n")
             
     elif number == 2:
         print("What is the biggest number in this list?", randNumbers)
@@ -88,7 +87,7 @@ for question in range(questions):
             print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer, ".\n")
+            print("Incorrect! Correct answer was " + str(answer) + ".\n")
 
     elif number == 3:
         print("What is the sum of the numbers in this list?", randNumbers)
@@ -99,7 +98,7 @@ for question in range(questions):
             print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer, ".\n")
+            print("Incorrect! Correct answer was " + str(answer) + ".\n")
 
     else:
         print("What is the average of the numbers in this list?", randNumbers, "(round UP to nearest integer)")
@@ -107,12 +106,12 @@ for question in range(questions):
         answer = math.ceil(sum(randNumbers) / len(randNumbers))
         
         if value == answer:
-            print("Correct!")
+            print("Correct!\n")
             score = score + 1
         else:
-            print("Incorrect! Correct answer was", answer, ".\n")
+            print("Incorrect! Correct answer was " + str(answer) + ".\n")
 
-print("Test complete!\n You scored", score, "/", questions, "(", round(score / questions * 100, 1), "%).")
+print("Test complete!\nYou scored", str(score) + "/" + str(questions), "(" + str(round(score / questions * 100, 1)) + "%).")
 
 if score == questions:
     print("Perfect score, well done!")
