@@ -1,6 +1,7 @@
 import math
 import random
 
+######################################
 def random_list(quantity, minimum, maximum):
     result = []
     
@@ -9,6 +10,42 @@ def random_list(quantity, minimum, maximum):
         result.append(num)
 
     return result
+
+##################################
+def get_question(number, randomList):
+    question = ""
+
+    if number == 1:
+        question = "What is the smallest number in this list? " + str(randomList)
+        
+    elif number == 2:
+        question = "What is the biggest number in this list? " + str(randomList)
+        
+    elif number == 3:
+        question = "What is the sum of the numbers in this list? " + str(randomList)
+        
+    else:
+        question = "What is the average of the numbers in this list? " + str(randomList) + "(round UP to nearest integer)"
+
+    return question
+
+###################################
+def get_correct_answer(number, randomList):
+    answer = None
+
+    if number == 1:
+        answer = min(randomList)
+        
+    elif number == 2:
+        answer = max(randomList)
+        
+    elif number == 3:
+        answer = sum(randomList)
+        
+    else:
+        answer = math.ceil(sum(randomList) / len(randomList))
+
+    return answer
 
 ##################################
 
@@ -52,64 +89,29 @@ else:
     maximum = 25
 
 score = 0
-randNumbers = None
+randomList = None
 
 for question in range(questions):
     print("Question" + str(question + 1) + " of " + str(questions) + ".")
 
-    # not up to final question
     if question + 1 < questions:
-        randNumbers = random_list(quantity, minimum, maximum)
+        randomList = random_list(quantity, minimum, maximum)
 
     else:
         print("Challenge questions!")
-        randNumbers = random_list(quantity, minimum * 2, maximum * 2)
+        randomList = random_list(quantity, minimum * 2, maximum * 2)
 
     number = random.randint(1,4)
 
-    if number == 1:
-        print("What is the smallest number in this list?", randNumbers)
-        value = int(input())
-        answer = min(randNumbers)
-        
-        if value == answer:
-            print("Correct!\n")
-            score = score + 1
-        else:
-            print("Incorrect! Correct answer was " + str(answer) + ".\n")
-            
-    elif number == 2:
-        print("What is the biggest number in this list?", randNumbers)
-        value = int(input())
-        answer = max(randNumbers)
-        
-        if value == answer:
-            print("Correct!\n")
-            score = score + 1
-        else:
-            print("Incorrect! Correct answer was " + str(answer) + ".\n")
+    print(get_question(number, randomList))
+    correctAnswer = get_correct_answer(number, randomList)
+    answer = int(input())
 
-    elif number == 3:
-        print("What is the sum of the numbers in this list?", randNumbers)
-        value = int(input())
-        answer = sum(randNumbers)
-        
-        if value == answer:
-            print("Correct!\n")
-            score = score + 1
-        else:
-            print("Incorrect! Correct answer was " + str(answer) + ".\n")
-
+    if answer == correctAnswer:
+        print("Correct!\n")
+        score = score + 1
     else:
-        print("What is the average of the numbers in this list?", randNumbers, "(round UP to nearest integer)")
-        value = int(input())
-        answer = math.ceil(sum(randNumbers) / len(randNumbers))
-        
-        if value == answer:
-            print("Correct!\n")
-            score = score + 1
-        else:
-            print("Incorrect! Correct answer was " + str(answer) + ".\n")
+        print("Incorrect! Correct answer was " + str(correctAnswer) + ".\n")
 
 print("Test complete!\nYou scored", str(score) + "/" + str(questions), "(" + str(round(score / questions * 100, 1)) + "%).")
 
