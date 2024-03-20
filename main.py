@@ -77,7 +77,7 @@ def print_selcted_difficulty(difficulty):
     else:
         text = "Hard"
 
-    print text + " difficulty selected!\n"
+    print(text + " difficulty selected!\n")
 
 ###############################
 
