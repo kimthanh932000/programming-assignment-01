@@ -49,7 +49,7 @@ def get_correct_answer(number, randomList):
 
 ##################################
 def is_valid(value):
-    if value.upper() in ["E", "M", "H"]:
+    if value in ["E", "M", "H"]:
         return True
 
     return False
@@ -83,14 +83,14 @@ def print_selcted_difficulty(difficulty):
 
 print("Welcome to the Number List Test program.")
 
-difficulty = input("Select a difficulty:\n[E]asy\n[M]edium\n[H]ard\n")
+difficulty = input("Select a difficulty:\n[E]asy\n[M]edium\n[H]ard\n").upper()
 
 while True:
     if is_valid(difficulty):
         print_selcted_difficulty(difficulty)
         break
     
-    difficulty = input("Invalid choice! Enter E, M or H.\n")
+    difficulty = input("Invalid choice! Enter E, M or H.\n").upper()
 
 attributes = get_difficulty_attributes(difficulty)
 
@@ -104,9 +104,9 @@ score = 0
 for i in range(questions):
     randomList = None
 
-    print("Question" + str(i + 1) + " of " + str(questions) + ".")
+    print("Question " + str(i + 1) + " of " + str(questions) + ".")
 
-    if question + 1 < questions:
+    if i + 1 < questions:
         randomList = random_list(quantity, minimum, maximum)
     else:
         print("Challenge questions!")
